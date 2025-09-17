@@ -124,16 +124,23 @@ h2{
 
 
 .gambarweb{
-    
+    background-color: rgb(199, 183, 255);
     float: left; /* Membuat gambar berderetan */
     padding: 10px; /* Tambahkan padding jika diperlukan */
     padding-bottom: 70px;
+    border-radius: 40px;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
 }
 .gambarwebg{
+    border-radius: 40px;
     width: 150px;
     height: 150px;
+    align-items: center;
 }
 .gambarweb1{
+    text-align: center;
     /* width: 200px;
     height: 200px; */
     display: flex;  /* Aktifkan flexbox */
@@ -146,7 +153,7 @@ h2{
     /* float: left; */
 }
 .gambarweb2{
-    padding: 20px;
+    padding: 40px;
 }
 .gambarweb3{
     /* width: 200px;
@@ -158,21 +165,35 @@ h2{
     padding: 10px;
     padding-top: 10px;
     list-style: none;
-    padding-right: 40%;
+    padding-right: 30%;
 }
 
 .gambarweb4{
-    
+    display: flex;  /* Aktifkan flexbox */
+    flex-wrap: wrap; /* Mengizinkan gambar melompat ke baris baru jika diperlukan */
+    justify-content: space-around; /* Jarak antara gambar */
+    align-items: center; /*Memusatkan gambar secara vertikal */
+    padding: 10px;
+    padding-top: 10px;
+    list-style: none;
+    border-radius: 40px;
+    background-color: rgb(199, 183, 255);
+}
+.gambarweb5{
+    display: flex;  /* Aktifkan flexbox */
+    flex-wrap: wrap; /* Mengizinkan gambar melompat ke baris baru jika diperlukan */
+    justify-content: space-around; /* Jarak antara gambar */
+    align-items: center; /*Memusatkan gambar secara vertikal */
+    padding: 10px;
+    padding-top: 10px;
+    list-style: none;
+    padding-right: 5%;
+}
+.gambarweb6{
     padding-right: 50%;
     float: left; /* Membuat gambar berderetan */
     padding: 10px; /* Tambahkan padding jika diperlukan */
     padding-bottom: 70px;
-}
-.gambarweb5{
-    width: 100px;
-    height: 100px;
-    margin-right: auto;
-    margin-left: 40%;
 }
 .batas{
     color: rgb(167, 167, 253);
