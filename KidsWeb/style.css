@@ -28,6 +28,10 @@ header {
     top: 0;
     position: sticky;
     max-height: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
 }
 .himg {
     width: 100;
@@ -271,3 +275,4 @@ h2{
 .container{
     background-color: rgb(204, 204, 255);
 }
+
