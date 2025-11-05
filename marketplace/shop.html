@@ -1,0 +1,121 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>market/home</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+        rel="stylesheet">
+    <meta name="google-site-verification" content="Y-VVeHSkqj9c1LL_fbXdMetvl7Ur9QVpPH-qxBETjm0" />
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+</head>
+
+<body>
+    <ul>
+        <li>
+            <header>
+                <img src="" class="himg">
+                <!-- a href="profile.html" class="float:left;"><img src="asset/profileDefault.png" class="profile"></a> -->
+
+                <nav class="navbar" x-data>
+                    <a href="#"> -- </a>
+                    <button id="tambahProduk">
+                        <a href="#" class="isi">Tambahproduk</a>
+                    </button>
+                    <a href="#"> -- </a>
+                    <a href="#" class="isi">Edit produk</a>
+                    <!-- <a href="#"> -- </a> -->
+                    <a id="keranjang" href="#" class="isi" @click.prevent="$store.cart.toggleOpen()">
+                        <i data-feather="shopping-cart"></i>
+                        <span class="notiveJumlah" x-show="$store.cart && $store.cart.jumlah"
+                            x-text="$store.cart ? $store.cart.jumlah : ''"></span>
+                    </a>
+
+                    <a href="#"> -- </a>
+                </nav>
+
+            </header>
+
+
+            <main x-data="produk()">
+                <h1>Selamat berbelanja</h1>
+
+                <!-- Detail produk — pakai selectedItem, bukan item di luar loop -->
+                <div x-ref="detail" class="detail" x-show="selectedItem" style="display: none;" x-cloak>
+                    <h2>Detail Produk</h2>
+                    <img :src="`asset/${selectedItem.asset}`" class="gambarwebg" :alt="selectedItem.name">
+                    <p x-text="selectedItem.name"></p>
+                    <span x-text="selectedItem.deskripsi"></span>
+                    <p>stok : <span x-text="selectedItem.stok"></span></p>
+                    <button class="tutupDeskripsi" @click="selectedItem = null">Tutup</button>
+                </div>
+
+                <!-- aside / keranjang -->
+                <aside class="kanan">
+                    <div class="keranjang">
+                        <!-- tombol keranjang di navbar -- ganti supaya memanggil store toggle (lihat di nav) -->
+                        <div id="isiKeranjang" x-show="$store.cart.isOpen" x-cloak>
+                            <h3>Keranjang Belanja</h3>
+                            <button id="tutupKeranjang" @click="$store.cart.isOpen = false">Tutup</button>
+                        </div>
+
+                        <div id="saran" x-show="!$store.cart.isOpen" x-cloak>
+                            <!-- saran content -->
+                        </div>
+
+                        <div x-show="$store.cart && $store.cart.jumlah > 0"
+                            style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #ccc;">
+                            <strong>TOTAL: </strong>
+                            <span x-text="rupiah($store.cart ? $store.cart.totalHarga : 0)"></span>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- shop -->
+                <section id="produk" class="shop" style="display: block;">
+                    <template x-for="item in items" :key="item.id">
+                        <div class="gambarweb" style="display: block;">
+                            <!-- path gambar diperbaiki: asset/${item.asset} -->
+                            <img :src="`asset/${item.asset}`" :alt="item.name" class="gambarwebg">
+                            <p class="namaproduk" x-text="item.name"></p>
+                            <p class="harga"><span x-text="rupiah(item.price)"></span></p>
+                            <p class="deskripsi" x-show="item.deskripsi" x-text="item.deskripsi"></p>
+
+                            <!-- tampilkan detail dengan menyet selectedItem -->
+                            <button class="Selengkapnya" onclick="$refs.detail"
+                                @click="selectedItem = item">Selengkapnya</button>
+
+                            <!-- tambah ke keranjang (memanggil store) -->
+                            <button class="tombolproduk" @click="$store.cart.add(item)">
+                                <i data-feather="shopping-cart"></i>
+                            </button>
+                        </div>
+                    </template>
+                </section>
+
+                <script src="sistem.js"></script>
+            </main>
+
+
+            <footer>
+                <div class="more">
+                    <p>© NitaZara team</p>
+                    <h3>Contact Me</h3>
+                    <p> Gmail : codingwithtasha@gmail.com</p>
+                </div>
+                <div class="cente">
+                    <h3>Folow Me</h3>
+                    <p> Youtube : coding with tasha</p>
+                    <p>github : https://github.com/tashanita</p>
+                </div>
+            </footer>
+        </li>
+    </ul>
+    <script>
+        feather.replace();
+    </script>
+
+</body>
